@@ -1,19 +1,13 @@
 # Poinx
 
-To start your Phoenix server:
+A clone of points, but in Elixir and Phoenix.
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup`
-  * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
+## Contributing
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+Since this is for our study group, and we might have to stop a session in the middle of some work, after each session, we can just add here
+What was done, where we stopped and why and where we need to pick up from in the next session.
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
-
-## Learn more
-
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+### Session 1 - June 20th, 2022
+- **Participants**: Mateus, Cleiviane and Kuda
+- **What got done**: Added the `Project` resource
+- **Where we stopped**: We were unable to figure out how to properly add a nested live view resource. Specifically, when trying to add the `Add Story` button to the project's live view show page, it would always try to render the modal present in the `index.html.heex` in the `story_live` folder. In order to move on, we just need to figure out how to make it render that modal in our current context.
