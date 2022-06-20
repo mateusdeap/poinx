@@ -8,6 +8,7 @@ defmodule Poinx.Projects.Project do
     field :parent_id, :integer
     field :status, :string
     field :title, :string
+    has_many :stories, Story
 
     timestamps()
   end

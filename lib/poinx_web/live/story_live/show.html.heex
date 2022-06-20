@@ -1,0 +1,46 @@
+<h1>Show Story</h1>
+
+<%= if @live_action in [:edit] do %>
+  <.modal return_to={Routes.story_show_path(@socket, :show, @story)}>
+    <.live_component
+      module={PoinxWeb.StoryLive.FormComponent}
+      id={@story.id}
+      title={@page_title}
+      action={@live_action}
+      story={@story}
+      return_to={Routes.story_show_path(@socket, :show, @story)}
+    />
+  </.modal>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Title:</strong>
+    <%= @story.title %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @story.description %>
+  </li>
+
+  <li>
+    <strong>Position:</strong>
+    <%= @story.position %>
+  </li>
+
+  <li>
+    <strong>Real score:</strong>
+    <%= @story.real_score %>
+  </li>
+
+  <li>
+    <strong>Extra info:</strong>
+    <%= @story.extra_info %>
+  </li>
+
+</ul>
+
+<span><%= live_patch "Edit", to: Routes.story_show_path(@socket, :edit, @story), class: "button" %></span> |
+<span><%= live_redirect "Back", to: Routes.story_index_path(@socket, :index) %></span>

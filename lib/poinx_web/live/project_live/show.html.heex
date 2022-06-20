@@ -3,6 +3,7 @@
 <%= if @live_action in [:edit] do %>
   <.modal return_to={Routes.project_show_path(@socket, :show, @project)}>
     <.live_component
+      module={PoinxWeb.StoryLive.FormComponent}
       id={@project.id}
       title={@page_title}
       action={@live_action}
@@ -13,3 +14,6 @@
 <% end %>
 
 <%# List all stories %>
+<%= @project.stories %>
+
+<span><%= live_patch "Add Story", to: Routes.story_index_path(@socket, :new, @project), class: "button" %></span> |
