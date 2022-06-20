@@ -17,7 +17,13 @@ defmodule PoinxWeb.Router do
   scope "/", PoinxWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    live "/projects", ProjectLive.Index, :index
+    live "/projects/new", ProjectLive.Index, :new
+    live "/projects/:id/edit", ProjectLive.Index, :edit
+
+    live "/projects/:id", ProjectLive.Show, :show
+    live "/projects/:id/show/edit", ProjectLive.Show, :edit
+
   end
 
   # Other scopes may use custom stacks.
