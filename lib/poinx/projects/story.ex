@@ -16,7 +16,7 @@ defmodule Poinx.Projects.Story do
   @doc false
   def changeset(story, attrs) do
     story
-    |> cast(attrs, [:title, :description, :position, :real_score, :extra_info])
-    |> validate_required([:title, :description, :position, :real_score, :extra_info])
+    |> cast(attrs, [:title, :description, :position, :real_score, :extra_info, :project_id])
+    |> validate_required([:title, :description, :project_id])
   end
 end
