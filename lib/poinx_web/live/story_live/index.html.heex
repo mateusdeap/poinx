@@ -1,0 +1,47 @@
+<h1>Listing Stories</h1>
+
+<%= if @live_action in [:new, :edit] do %>
+  <.modal return_to={Routes.story_index_path(@socket, :index)}>
+    <.live_component
+      module={PoinxWeb.StoryLive.FormComponent}
+      id={@story.id || :new}
+      title={@page_title}
+      action={@live_action}
+      story={@story}
+      return_to={Routes.story_index_path(@socket, :index)}
+    />
+  </.modal>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Position</th>
+      <th>Real score</th>
+      <th>Extra info</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="stories">
+    <%= for story <- @stories do %>
+      <tr id={"story-#{story.id}"}>
+        <td><%= story.title %></td>
+        <td><%= story.description %></td>
+        <td><%= story.position %></td>
+        <td><%= story.real_score %></td>
+        <td><%= story.extra_info %></td>
+
+        <td>
+          <span><%= live_redirect "Show", to: Routes.story_show_path(@socket, :show, story) %></span>
+          <span><%= live_patch "Edit", to: Routes.story_index_path(@socket, :edit, story) %></span>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: story.id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= live_patch "New Story", to: Routes.story_index_path(@socket, :new) %></span>
