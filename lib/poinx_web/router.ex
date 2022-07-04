@@ -24,8 +24,8 @@ defmodule PoinxWeb.Router do
     live "/projects/:id", ProjectLive.Show, :show
     live "/projects/:id/show/edit", ProjectLive.Show, :edit
 
-    live "/projects/:project_id/stories/new", StoryLive.Index, :new
     live "/projects/:project_id/stories/:id/edit", StoryLive.Index, :edit
+    live "/projects/:id/stories/new", ProjectLive.Show, :new
 
     live "/projects/:project_id/stories/:id", StoryLive.Show, :show
     live "/stories/:project_id/show/edit", StoryLive.Show, :edit
