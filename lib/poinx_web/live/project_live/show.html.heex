@@ -3,7 +3,7 @@
 <%= if @live_action in [:edit] do %>
   <.modal return_to={Routes.project_show_path(@socket, :show, @project)}>
     <.live_component
-      module={PoinxWeb.StoryLive.FormComponent}
+      module={PoinxWeb.ProjectLive.FormComponent}
       id={@project.id}
       title={@page_title}
       action={@live_action}
@@ -13,7 +13,40 @@
   </.modal>
 <% end %>
 
-<%# List all stories %>
-<%= @project.stories %>
+<%= if @live_action in [:new] do %>
+  <.modal return_to={Routes.project_show_path(@socket, :show, @project)}>
+    <.live_component
+      module={PoinxWeb.ProjectLive.StoryFormComponent}
+      id={@project.id}
+      title={@page_title}
+      action={@live_action}
+      project={@project}
+      story={@story}
+      return_to={Routes.project_show_path(@socket, :show, @project)}
+    />
+  </.modal>
+<% end %>
 
-<span><%= live_patch "Add Story", to: Routes.story_index_path(@socket, :new, @project), class: "button" %></span> |
+<%# List all stories %>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="stories">
+    <%= for story <- @project.stories do %>
+      <tr id={"story-#{story.id}"}>
+        <td><%= story.title %></td>
+        <td><%= story.description %></td>
+        <td>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: story.id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= live_patch "Add Story", to: Routes.project_show_path(@socket, :new, @project.id), class: "button" %></span>
