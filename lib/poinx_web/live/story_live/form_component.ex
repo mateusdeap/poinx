@@ -1,4 +1,4 @@
-defmodule PoinxWeb.ProjectLive.StoryFormComponent do
+defmodule PoinxWeb.StoryLive.FormComponent do
   use PoinxWeb, :live_component
 
   alias Poinx.Projects
