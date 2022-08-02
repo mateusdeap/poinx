@@ -17,6 +17,18 @@
     <%= textarea f, :description %>
     <%= error_tag f, :description %>
   
+    <%= label f, :position %>
+    <%= number_input f, :position %>
+    <%= error_tag f, :position %>
+  
+    <%= label f, :real_score %>
+    <%= number_input f, :real_score %>
+    <%= error_tag f, :real_score %>
+  
+    <%= label f, :extra_info %>
+    <%= text_input f, :extra_info %>
+    <%= error_tag f, :extra_info %>
+  
     <div>
       <%= submit "Save", phx_disable_with: "Saving..." %>
     </div>
